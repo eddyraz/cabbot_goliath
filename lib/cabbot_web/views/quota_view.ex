@@ -14,7 +14,7 @@ defmodule CabbotWeb.QuotaView do
     %{data: render_one(quota, QuotaView, "quota.json")}
   end
 
-  def render("quota.json", %{Quota: quota}) do
+  def render("quota.json", %{quota: quota}) do
     %{
       id: quota.id,
       loan_code: quota.loan_code,

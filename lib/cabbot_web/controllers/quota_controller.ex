@@ -57,8 +57,8 @@ defmodule CabbotWeb.QuotaController do
         |> put_status(:created)
         |> put_resp_header("location", Routes.quota_path(conn, :show, quota))
         |> put_view(CabbotWeb.QuotaView)
-        |> render("index_quota.json", Quota: quota)
-	|> Phoenix.View.render_many("index_quota.json", Quota: quota)
+        |> render("show.json", quota: quota)
+        # |> Phoenix.View.render_many("index_quota.json", Quota: quota)
 
       end
     end)
