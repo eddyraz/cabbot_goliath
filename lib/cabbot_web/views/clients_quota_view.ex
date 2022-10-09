@@ -15,6 +15,7 @@ defmodule CabbotWeb.ClientsQuotaView do
 
 
     %{
+      id: clients_quota.id,
       loan_code: clients_quota.loan_code,
       plan_number: clients_quota.plan_number,
       quota_sec: clients_quota.quota_sec,
