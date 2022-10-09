@@ -1,0 +1,8 @@
+mix format failed for file: lib/cabbot_web/controllers/quota_controller-emacs-elixir-format.ex
+** (SyntaxError) lib/cabbot_web/controllers/quota_controller-emacs-elixir-format.ex:114:3: syntax error before: end. "end" is a reserved word in Elixir and therefore its usage is limited. For instance, it can't be used as a variable or be defined nor invoked as a regular function
+    (elixir 1.13.4) lib/code.ex:737: Code.format_string!/2
+    (mix 1.13.4) lib/mix/tasks/format.ex:548: Mix.Tasks.Format.elixir_format/2
+    (mix 1.13.4) lib/mix/tasks/format.ex:564: Mix.Tasks.Format.format_file/2
+    (elixir 1.13.4) lib/task/supervised.ex:89: Task.Supervised.invoke_mfa/2
+    (elixir 1.13.4) lib/task/supervised.ex:34: Task.Supervised.reply/4
+    (stdlib 3.14) proc_lib.erl:226: :proc_lib.init_p_do_apply/3

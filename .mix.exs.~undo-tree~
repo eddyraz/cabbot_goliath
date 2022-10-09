@@ -1,0 +1,20 @@
+(undo-tree-save-format-version . 1)
+"3316856d4fdc51fdf7555ca975c228046a112a3f"
+[nil nil nil nil (25371 39751 397306 923000) 0 nil]
+([nil nil ((1245 . 1252) (t 25364 50880 697831 756000)) nil (25371 39751 397303 316000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 1269 . 1270) (nil fontified nil 1252 . 1270) (1252 . 1270)) nil (25371 39751 397294 349000) 0 nil])
+([nil nil ((1245 . 1246) (t 25371 39751 393953 985000)) nil (25371 39768 12326 685000) 0 nil])
+([nil nil ((1160 . 1161) (t 25371 39768 9805 711000)) nil (25393 57763 385064 565000) 0 nil])
+([nil nil ((190 . 191) (t 25393 57763 394048 668000)) nil (25393 57789 304319 559000) 0 nil])
+([nil nil ((#("6" 0 1 (fontified t face font-lock-string-face)) . -924) (undo-tree-id1 . -1) 925 (t 25393 57789 302118 710000)) nil (25410 21108 606980 995000) 0 nil])
+([nil nil ((924 . 925)) nil (25410 21108 606974 833000) 0 nil])
+([nil nil ((#("0" 0 1 (fontified t face font-lock-string-face)) . -924) (undo-tree-id0 . -1) 925) nil (25410 21108 606970 375000) 0 nil])
+([nil nil ((924 . 925)) nil (25410 21108 606944 426000) 0 nil])
+([nil nil ((#("~" 0 1 (fontified t face font-lock-string-face)) . -919) (undo-tree-id2 . -1) (#(">" 0 1 (fontified t face font-lock-string-face)) . -920) (undo-tree-id3 . -1) 921 (t 25410 21108 615869 964000)) nil (25410 21498 50228 753000) 0 nil])
+([nil nil ((919 . 921)) nil (25410 21498 50204 627000) 0 nil])
+([nil nil ((#("=" 0 1 (fontified t face font-lock-string-face)) . -919) (undo-tree-id4 . -1) 920 (t 25410 21498 49047 827000)) nil (25410 21513 753911 198000) 0 nil])
+([nil nil ((#("=" 0 1 (fontified t face font-lock-string-face)) . -919) (undo-tree-id5 . -1) 920 (t 25410 21513 761415 24000)) nil (25410 21529 463496 435000) 0 nil])
+([nil nil ((919 . 921)) nil (25410 21529 463481 858000) 0 nil])
+([nil nil ((925 . 927) (t 25410 21529 461781 760000)) nil (25410 21534 938464 314000) 0 nil])
+([nil current ((#("." 0 1 (fontified t face font-lock-string-face)) . -925) (undo-tree-id6 . -1) (#("1" 0 1 (fontified t face font-lock-string-face)) . -926) (undo-tree-id7 . -1) 927 (t 25410 21534 937909 631000)) nil (25410 21553 170452 928000) 0 nil])
+nil

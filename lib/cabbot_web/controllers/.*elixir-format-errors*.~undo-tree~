@@ -1,0 +1,14 @@
+(undo-tree-save-format-version . 1)
+"da39a3ee5e6b4b0d3255bfef95601890afd80709"
+[nil nil nil nil (25388 51012 781992 316000) 0 nil]
+([nil nil ((1 . 803) (t . 0)) nil (25388 51012 781984 781000) 0 nil])
+([nil current (("mix format failed for file: lib/cabbot_web/controllers/quota_controller-emacs-elixir-format.ex
+** (SyntaxError) lib/cabbot_web/controllers/quota_controller-emacs-elixir-format.ex:114:3: syntax error before: end. \"end\" is a reserved word in Elixir and therefore its usage is limited. For instance, it can't be used as a variable or be defined nor invoked as a regular function
+    (elixir 1.13.4) lib/code.ex:737: Code.format_string!/2
+    (mix 1.13.4) lib/mix/tasks/format.ex:548: Mix.Tasks.Format.elixir_format/2
+    (mix 1.13.4) lib/mix/tasks/format.ex:564: Mix.Tasks.Format.format_file/2
+    (elixir 1.13.4) lib/task/supervised.ex:89: Task.Supervised.invoke_mfa/2
+    (elixir 1.13.4) lib/task/supervised.ex:34: Task.Supervised.reply/4
+    (stdlib 3.14) proc_lib.erl:226: :proc_lib.init_p_do_apply/3
+" . -1) (undo-tree-id0 . -95) (undo-tree-id1 . -95) (undo-tree-id2 . -376) (undo-tree-id3 . -376) (undo-tree-id4 . -435) (undo-tree-id5 . -435) (undo-tree-id6 . -514) (undo-tree-id7 . -514) (undo-tree-id8 . -591) (undo-tree-id9 . -591) (undo-tree-id10 . -667) (undo-tree-id11 . -667) (undo-tree-id12 . -738) (undo-tree-id13 . -738) (undo-tree-id14 . -802) (undo-tree-id15 . -802) (undo-tree-id16 . -802) (undo-tree-id17 . -802) (undo-tree-id18 . -802) (undo-tree-id19 . -802) (undo-tree-id20 . -802) (undo-tree-id21 . -802) (t 25388 51012 819974 811000)) nil (25388 51023 549048 717000) 0 nil])
+nil

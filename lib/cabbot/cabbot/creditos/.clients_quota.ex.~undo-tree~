@@ -1,0 +1,7 @@
+(undo-tree-save-format-version . 1)
+"deaae6f494b5bdb2b9c28bfe556174357b94e6a5"
+[nil nil nil nil (25389 49832 774640 770000) 0 nil]
+([nil nil ((#("p" 0 1 (face elixir-atom-face fontified t)) . -1047) (undo-tree-id2 . -1) 1048 (t 25364 51745 71514 685000)) nil (25408 570 944041 296000) 0 nil])
+([nil nil ((#("p" 0 1 (face elixir-atom-face fontified t)) . -244) (undo-tree-id1 . -1) 245) nil (25408 570 944034 62000) 0 nil])
+([nil current ((#("p" 0 1 (face elixir-atom-face fontified t)) . -1437) (undo-tree-id0 . -1) 1438) nil (25408 570 944023 633000) 0 nil])
+nil
