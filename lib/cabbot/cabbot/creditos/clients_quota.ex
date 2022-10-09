@@ -2,6 +2,8 @@ defmodule Cabbot.Cabbot.Creditos.ClientsQuota do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @timestamps_opts [type: :utc_datetime]
+
   schema "clients_quota" do
     field :calc_number_days, :integer
     field :concept_state, :string

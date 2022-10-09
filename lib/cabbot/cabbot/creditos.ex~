@@ -54,7 +54,7 @@ defmodule Cabbot.Cabbot.Creditos do
     %Quota{}
     |> Quota.changeset(attrs)
     |> Repo.insert()
-   # |> IO.inspect()
+    
   end
 
   
