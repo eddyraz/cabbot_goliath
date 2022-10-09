@@ -159,7 +159,6 @@ defmodule Cabbot.Cabbot.Creditos do
   """
   def create_clients_quota(attrs \\ %{}) do
     %ClientsQuota{}
-    |> IO.inspect()
     |> ClientsQuota.changeset(attrs)
     |> Repo.insert()
   end

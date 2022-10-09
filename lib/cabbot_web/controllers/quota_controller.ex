@@ -32,10 +32,14 @@ defmodule CabbotWeb.QuotaController do
 #             ) do
 
       with [:ClientsQuota] <- quota_map |> Map.keys() do
-             Creditos.create_clients_quota(
-               quota_map
+
+	      quota_map
                |> Map.values()
                |> hd
+	       |> Creditos.create_clients_quota(
+               
+	      # |> Enum.into(%{})
+	      # |> IO.inspect()
              ) 
 #      conn
 #        |> put_status(:created)
@@ -192,20 +196,18 @@ defmodule CabbotWeb.QuotaController do
 
   def convert_dates(dates_list) do
     dates_list
-    |> IO.inspect()
     |> Enum.map(fn {k, v} -> {k, Timex.parse(v, "%d/%m/%Y %H:%M:%S %Z", :strftime) |> elem(1)} end)
-    |> IO.inspect()
     |> Enum.into(%{})
   end
 
   def extract_date_fields(qmap) do
     qmap
-    |> IO.inspect()
     |> Map.keys()
     |> Enum.filter(&String.ends_with?(&1, "_date"))
     |> Enum.into(%{}, fn x -> {x, qmap[x]} end)
     |> Enum.filter(fn {_x, v} ->
       Regex.match?(~r/^[0-9][0-9]\/[0-9][0-9]\/[0-9][0-9][0-9][0-9]/, v |> to_string())
+      
     end)
     |> convert_dates()
   end

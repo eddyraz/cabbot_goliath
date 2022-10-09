@@ -1,5 +1,5 @@
 (undo-tree-save-format-version . 1)
-"4f130e4627df6ba76d52a5a219c796509e64cc84"
+"72d6cdf48ecdfbb613a1c9e6cbf152e138046dcc"
 [nil nil nil nil (25395 35775 405173 666000) 0 nil]
 ([nil nil ((910 . 912) (#("  " 0 2 (fontified t)) . 909) (undo-tree-id4 . -2) (908 . 912) (t 25366 34563 0 0)) nil (25395 35775 405171 341000) 0 nil])
 ([nil nil ((912 . 916)) nil (25395 35775 405167 454000) 0 nil])
@@ -131,5 +131,8 @@
 ([nil nil ((2767 . 2772) (t 25410 61617 154172 477000)) nil (25410 61624 224471 677000) 0 nil])
 ([nil nil ((#(")" 0 1 (fontified nil)) . -2786) (2786 . 2787) (#(")" 0 1 (fontified nil)) . -2786) (2786 . 2787) (2772 . 2787)) nil (25410 61624 224461 678000) 0 nil])
 ([nil nil ((2922 . 2927) (t 25410 61624 238605 548000)) nil (25411 885 410311 382000) 0 nil])
-([nil current ((2992 . 3004)) nil (25411 885 410303 76000) 0 nil])
+([nil nil ((2992 . 3004)) nil (25411 885 410303 76000) 0 nil])
+([nil nil ((#("    |> IO.inspect()" 0 7 (fontified t) 7 9 (fontified t face font-lock-type-face) 9 17 (fontified t) 17 18 (fontified t) 18 19 (fontified t)) . 2768) (undo-tree-id40 . -19) (t 25411 885 449806 948000)) nil (25411 4573 291610 725000) 0 nil])
+([nil current ((#("
+" 0 1 (fontified t)) . 2768) (undo-tree-id36 . -1) (undo-tree-id37 . -1) (undo-tree-id38 . -1) (undo-tree-id39 . -1)) nil (25411 4573 291605 966000) 0 nil])
 nil
