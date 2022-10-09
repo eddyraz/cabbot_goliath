@@ -88,7 +88,7 @@ defmodule CabbotWeb.QuotaController do
     loan_code_field = data["Codprestamo"]
     quota_concept_list = data["CuotasConcepto"]
     quota_plan_list = data["PlanCuotas"]
-    process_concept_quota_map(quota_concept_list, loan_code_field) ++ process_quota_map(quota_plan_list, loan_code_field)
+    process_quota_map(quota_plan_list, loan_code_field) ++ process_concept_quota_map(quota_concept_list, loan_code_field)
   end
 
   # ++++++++++++++++++++Para la tabla Cuota++++++++++++++++++++++++++++++++++
@@ -205,7 +205,7 @@ defmodule CabbotWeb.QuotaController do
     |> Enum.filter(&String.ends_with?(&1, "_date"))
     |> Enum.into(%{}, fn x -> {x, qmap[x]} end)
     |> Enum.filter(fn {_x, v} ->
-      Regex.match?(~r/^[0-9][0-9]\/[0-9][0-9]\/[0-9][0-9][0-9][0-9]/, v)
+      Regex.match?(~r/^[0-9][0-9]\/[0-9][0-9]\/[0-9][0-9][0-9][0-9]/, v |> to_string())
     end)
     |> convert_dates()
   end
