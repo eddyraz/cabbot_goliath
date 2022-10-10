@@ -1,5 +1,5 @@
 (undo-tree-save-format-version . 1)
-"acb6ad828a3c22fbd9c042e1f926530749153396"
+"8ca9a567e73461002bb512eac9e2aa32ca555d65"
 [nil nil nil nil (25409 54927 413381 311000) 0 nil]
 ([nil nil ((#("Q" 0 1 (fontified t face font-lock-type-face)) . -21) (undo-tree-id6 . -1) (#("u" 0 1 (fontified t face font-lock-type-face)) . -22) (undo-tree-id7 . -1) (#("o" 0 1 (fontified t face font-lock-type-face)) . -23) (undo-tree-id8 . -1) (#("t" 0 1 (fontified t face font-lock-type-face)) . -24) (undo-tree-id9 . -1) (#("a" 0 1 (fontified t face font-lock-type-face)) . -25) (undo-tree-id10 . -1) 26 (t 25409 54889 794460 183000)) nil (25409 54927 413379 197000) 0 nil])
 ([nil nil ((21 . 28)) nil (25409 54927 413373 617000) 0 nil])
@@ -31,5 +31,8 @@
 ([nil nil ((224 . 232) (t 25410 8181 440167 138000)) nil (25410 8210 412387 429000) 0 nil])
 ([nil nil ((203 . 204) (t 25410 8210 448367 732000)) nil (25410 8243 472965 576000) 0 nil])
 ([nil nil ((27 . 28) (t 25410 8243 472596 490000)) nil (25410 10594 989036 605000) 0 nil])
-([nil current ((83 . 84)) nil (25410 10594 989031 797000) 0 nil])
+([nil nil ((83 . 84)) nil (25410 10594 989031 797000) 0 nil])
+([nil nil ((#("   # %{data: render_many(clients_quota, ClientsQuotaView, \"credits_clients_quota.json\")}" 0 3 (fontified t) 3 5 (fontified t face font-lock-comment-delimiter-face) 5 6 (fontified t face font-lock-comment-face) 6 7 (fontified t face font-lock-comment-face) 7 10 (fontified t face font-lock-comment-face) 10 11 (rear-nonsticky t fontified t face font-lock-comment-face) 11 12 (fontified t face font-lock-comment-face) 12 13 (fontified t face font-lock-comment-face) 13 40 (fontified t face font-lock-comment-face) 40 47 (fontified t face font-lock-comment-face) 47 56 (fontified t face font-lock-comment-face) 56 58 (fontified t face font-lock-comment-face) 58 59 (syntax-table (15) fontified t face font-lock-comment-face) 59 85 (fontified t face font-lock-comment-face) 85 86 (syntax-table (15) fontified t face font-lock-comment-face) 86 87 (rear-nonsticky t fontified t face font-lock-comment-face) 87 88 (fontified t face font-lock-comment-face)) . 202) (undo-tree-id30 . -88) (undo-tree-id31 . -7) (undo-tree-id32 . -13) (undo-tree-id33 . -3) (undo-tree-id34 . -3) (undo-tree-id35 . -88) (t 25410 10594 998683 742000)) nil (25412 14004 489532 241000) 0 nil])
+([nil current ((#("
+" 0 1 (fontified t)) . 202) (undo-tree-id27 . -1) (undo-tree-id28 . -1) (undo-tree-id29 . -1)) nil (25412 14004 489515 9000) 0 nil])
 nil

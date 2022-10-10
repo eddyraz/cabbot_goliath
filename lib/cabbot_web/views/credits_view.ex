@@ -4,7 +4,6 @@ defmodule CabbotWeb.CreditsView do
 
   def render("index.json", %{quota: quota}) do
     %{data: render_many(quota, QuotaView, "credits_quota.json")}
-   # %{data: render_many(clients_quota, ClientsQuotaView, "credits_clients_quota.json")}
   end
 
   def render("show.json", %{quota: quota}) do

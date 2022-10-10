@@ -2,7 +2,7 @@ defmodule CabbotWeb.ClientsQuotaView do
   use CabbotWeb, :view
   alias CabbotWeb.ClientsQuotaView
 
-  def render("index.json", %{cients_quota: clients_quota}) do
+  def render("index.json", %{clients_quota: clients_quota}) do
     %{data: render_many(clients_quota, ClientsQuotaView, "clients_quota.json")}
   end
 
@@ -12,8 +12,6 @@ defmodule CabbotWeb.ClientsQuotaView do
 
 
     def render("clients_quota.json", %{clients_quota: clients_quota}) do
-
-
     %{
       id: clients_quota.id,
       loan_code: clients_quota.loan_code,

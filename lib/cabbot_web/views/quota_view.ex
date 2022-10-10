@@ -4,7 +4,7 @@ defmodule CabbotWeb.QuotaView do
 
   def render("index.json", %{quotas: quotas}) do
     %{data: render_many(quotas, QuotaView, "quota.json")}
-  end
+   end
 
   
   def render("show.json", %{quota: quota}) do

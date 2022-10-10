@@ -18,57 +18,31 @@ defmodule CabbotWeb.QuotaController do
     qm = credits_params
     |> hd
     |> parse_params()
-    |> IO.inspect()
-
-
+        
     qmap = qm
     |> Enum.filter(fn x -> Map.keys(x) == [:Quota] end)
     |> Enum.map(fn x -> x[:Quota] |> Map.new(fn {k,v} -> {k |> String.to_atom(),v}  end) end)
-    |> IO.inspect()
-    Cabbot.Repo.insert_all(Quota,qmap)
+    resp_q_data = Cabbot.Repo.insert_all(Quota,qmap, returning: true)
+    |> elem(1)
+    conn
+    |> put_status(:created)
+    |> put_resp_header("location", Routes.quota_path(conn, :index, resp_q_data ))
+    |> put_view(CabbotWeb.QuotaView)
+    |> render("index.json", quotas: resp_q_data)
 
-
-       qcmap = qm
+    qcmap = qm
     |> Enum.filter(fn x -> Map.keys(x) == [:ClientsQuota] end)
     |> Enum.map(fn x -> x[:ClientsQuota] |> Map.new(fn {k,v} -> {k |> String.to_atom(),v}  end) end)
-    |> IO.inspect()
-    Cabbot.Repo.insert_all(ClientsQuota,qcmap)
- 
-    
-   # Creditos.create_many_quotas(qmap)
-    
- #   qm    
- #   |> Enum.map(fn quota_map ->
- #     with [:Quota] <- quota_map |> Map.keys(),
- #          {:ok, %Quota{} = quota} <-
- #            Creditos.create_quota(
- #              quota_map
- #              |> Map.values()
- #              |> hd
- #            ) do
- #       conn
- #       |> put_status(:created)
- #       |> put_resp_header("location", Routes.quota_path(conn, :show, quota))
- #       |> put_view(CabbotWeb.QuotaView)
-#        |> render("index.json", quotas: quota)
- #     end
-
- #     with [:ClientsQuota] <- quota_map |> Map.keys(),
- #          {:ok, %ClientsQuota{} = clients_quota} <-
- #            Creditos.create_clients_quota(
- #              quota_map
- #              |> Map.values()
- #              |> hd
- #            ) do
- #       conn
-  #      |> put_status(:created)
-  #      |> put_resp_header("location", Routes.quota_path(conn, :show, clients_quota))
-  #      |> put_view(CabbotWeb.ClientsQuotaView)
-  #      |> render("show.json", clients_quota: clients_quota)
-  #    end
-  #  end)
+    resp_cq_data = Cabbot.Repo.insert_all(ClientsQuota,qcmap, returning: true )
+    |> elem(1)
+    conn
+    |> put_status(:created)
+    |> put_resp_header("location", Routes.quota_path(conn, :index, resp_cq_data ))
+    |> put_view(CabbotWeb.ClientsQuotaView)
+    |> render("index.json", clients_quota: resp_cq_data)
   end
 
+  
   def parse_params(data) do
     loan_code_field = data["Codprestamo"]
     quota_concept_list = data["CuotasConcepto"]
