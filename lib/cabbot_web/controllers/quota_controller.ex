@@ -25,6 +25,7 @@ defmodule CabbotWeb.QuotaController do
     credits_params
     |> hd
     |> parse_params()
+    |> IO.inspect()
     |> Enum.map(fn quota_map ->
  
       with [:Quota] <- quota_map |> Map.keys(),
@@ -206,6 +207,8 @@ defmodule CabbotWeb.QuotaController do
     |> Enum.filter(fn {_x, v} ->
       Regex.match?(~r/^[0-9][0-9]\/[0-9][0-9]\/[0-9][0-9][0-9][0-9]/, v |> to_string())
     end)
+    |> Enum.map(fn {k,v} -> {k,v <> " 00:00:00 Z"} end )
+    |> IO.inspect()
     |> convert_dates()
   end
 
