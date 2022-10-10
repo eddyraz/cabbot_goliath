@@ -1,9 +1,13 @@
 (undo-tree-save-format-version . 1)
-"74a4ce4777b4ae963cb15732a1ae1abe1b447c75"
+"b2cf8973864070cbb97b23e92f9ebfe548294c62"
 [nil nil nil nil (25389 49832 774640 770000) 0 nil]
 ([nil nil ((#("p" 0 1 (fontified t face elixir-atom-face)) . -1047) (undo-tree-id2 . -1) 1048 (t 25364 51745 71514 685000)) nil (25408 570 944041 296000) 0 nil])
 ([nil nil ((#("p" 0 1 (fontified t face elixir-atom-face)) . -244) (undo-tree-id1 . -1) 245) nil (25408 570 944034 62000) 0 nil])
 ([nil nil ((#("p" 0 1 (fontified t face elixir-atom-face)) . -1437) (undo-tree-id0 . -1) 1438) nil (25408 570 944023 633000) 0 nil])
 ([nil nil ((93 . 95) (#("  " 0 2 (fontified t)) . 92) (undo-tree-id0 . -2) (undo-tree-id1 . -2) (91 . 95) (t 25408 570 954137 667000)) nil (25411 246 733497 503000) 0 nil])
-([nil current ((nil rear-nonsticky nil 132 . 133) (nil fontified nil 95 . 133) (95 . 133)) nil (25411 246 733477 14000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 132 . 133) (nil fontified nil 95 . 133) (95 . 133)) nil (25411 246 733477 14000) 0 nil])
+([nil nil ((93 . 94) (t 25411 37888 582097 26000)) nil (25412 7346 450750 414000) 0 nil])
+([nil nil ((931 . 932)) nil (25412 7346 450742 429000) 0 nil])
+([nil nil ((#("#    timestamps()" 0 5 (fontified t face font-lock-comment-delimiter-face) 5 17 (fontified t face font-lock-comment-face)) . 931) (undo-tree-id3 . -1) (undo-tree-id4 . -1) (undo-tree-id5 . -1) (undo-tree-id6 . -17) (t 25412 7346 447669 359000)) nil (25412 8781 641996 602000) 0 nil])
+([nil current ((#("#  @timestamps_opts [type: :utc_datetime]" 0 1 (fontified t face font-lock-comment-delimiter-face) 1 3 (fontified t face font-lock-comment-delimiter-face) 3 19 (fontified t face font-lock-comment-face) 19 21 (fontified t face font-lock-comment-face) 21 26 (fontified t face font-lock-comment-face) 26 27 (fontified t face font-lock-comment-face) 27 40 (fontified t face font-lock-comment-face) 40 41 (fontified t rear-nonsticky t face font-lock-comment-face)) . 93) (undo-tree-id0 . -3) (undo-tree-id1 . -3) (undo-tree-id2 . -41)) nil (25412 8781 641981 312000) 0 nil])
 nil

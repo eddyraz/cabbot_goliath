@@ -20,7 +20,7 @@ defmodule Cabbot.Repo.Migrations.CreateQuota do
       add(:inte_adjust, :binary, null: false)
       add(:bill_number, :string, size: 1, null: false)
 
-      timestamps()
+
         
     end
   end
