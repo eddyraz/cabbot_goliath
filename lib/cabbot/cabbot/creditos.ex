@@ -57,6 +57,14 @@ defmodule Cabbot.Cabbot.Creditos do
     
   end
 
+
+    def create_many_quota(attrs \\ %{}) do
+    %Quota{}
+    |> Quota.changeset(attrs)
+    |> Repo.insert_all()
+    
+  end
+
   
 
   @doc """
@@ -155,6 +163,17 @@ defmodule Cabbot.Cabbot.Creditos do
     |> Repo.insert()
   end
 
+  def create_many_clients_quota(attrs \\ %{}) do
+    %ClientsQuota{}
+         
+    |> ClientsQuota.changeset(attrs)
+    |> Repo.insert_all(ClientsQuota)
+  end
+
+  
+
+  
+  
   def update_clients_quota(%ClientsQuota{} = clients_quota, attrs) do
     clients_quota
     |> ClientsQuota.changeset(attrs)

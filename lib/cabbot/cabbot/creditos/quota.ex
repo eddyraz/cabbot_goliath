@@ -1,8 +1,9 @@
 defmodule Cabbot.Cabbot.Creditos.Quota do
   use Ecto.Schema
   import Ecto.Changeset
+  @timestamps_opts [type: :utc_datetime_usec]
 
- # @primary_key {:loan_code, :string,:plan_number, :quota_sec}
+ 
   schema "quota" do
     field :inte_adjust, :binary
     field :balance_sub_code, :string

@@ -1,12 +1,10 @@
 defmodule CabbotWeb.QuotaController do
   use CabbotWeb, :controller
-  
-  
+
   alias Cabbot.Cabbot.Creditos
   alias Cabbot.Cabbot.Creditos.Quota
   alias Cabbot.Cabbot.Creditos.ClientsQuota
 
-  
   action_fallback CabbotWeb.FallbackController
 
   @config Application.compile_env(:cabbot, :creditos)
@@ -17,35 +15,19 @@ defmodule CabbotWeb.QuotaController do
   end
 
 
-#  def get_ecto_query_params(map_keys) do
-#    key = map_keys
-#    |>hd
-#    @config["TableNames"][key|>Atom.to_string]
-#      end
-  
+  def call_multi_render(x)do
+    x
+    |> Map.merge()
+    
+    end
   
   def create(conn, %{"Creditos" => credits_params}) do
-
     credits_params
     |> hd
     |> parse_params()
     |> IO.inspect()
     |> Enum.map(fn quota_map ->
-      with [:ClientsQuota] <- quota_map |> Map.keys(),
-           {:ok, %ClientsQuota{} = clients_quota} <-
-             Creditos.create_clients_quota(
-               quota_map
-               |> Map.values()
-               |> hd
-             ) do
-        conn
-        |> put_status(:created)
-        |> put_resp_header("location", Routes.quota_path(conn, :show, clients_quota))
-               |> put_view(CabbotWeb.ClientsQuotaView)
-               |> render("show.json", clients_quota: clients_quota)
-	       
-      end
-
+ 
       with [:Quota] <- quota_map |> Map.keys(),
            {:ok, %Quota{} = quota} <-
              Creditos.create_quota(
@@ -53,14 +35,35 @@ defmodule CabbotWeb.QuotaController do
                |> Map.values()
                |> hd
              ) do
-        conn
-        |> put_status(:created)
-        |> put_resp_header("location", Routes.quota_path(conn, :show, quota))
-        |> put_view(CabbotWeb.QuotaView)
-        |> render("show.json", quota: quota)
-        # |> Phoenix.View.render_many("index_quota.json", Quota: quota)
+	     IO.inspect(quota)
+#        conn
+#        |> put_status(:created)
+#        |> put_resp_header("location", Routes.quota_path(conn, :show, quota))
+#        |> put_view(CabbotWeb.QuotaView)
+#        |> render("show.json", quota: quota)
 
+        # |> Phoenix.View.render_many("index_quota.json", Quota: quota)
+	   end
+
+	                with [:ClientsQuota] <- quota_map |> Map.keys(),
+                 {:ok, %ClientsQuota{} = clients_quota} <-
+                   Creditos.create_clients_quota(
+                     quota_map
+                     |> Map.values()
+                     |> hd
+                   ) do
+
+#              conn
+#                |> put_status(:created)
+#                |> put_resp_header("location", Routes.quota_path(conn, :show, clients_quota))
+ #                      |> put_view(CabbotWeb.ClientsQuotaView)
+ #                      |> render("show.json", clients_quota: clients_quota)
       end
+
+
+	     
+
+	     
     end)
   end
 
@@ -88,6 +91,7 @@ defmodule CabbotWeb.QuotaController do
     loan_code_field = data["Codprestamo"]
     quota_concept_list = data["CuotasConcepto"]
     quota_plan_list = data["PlanCuotas"]
+
     process_quota_map(quota_plan_list, loan_code_field) ++ process_concept_quota_map(quota_concept_list, loan_code_field)
   end
 
@@ -121,7 +125,8 @@ defmodule CabbotWeb.QuotaController do
 
       proto_quota_map =
         Map.merge(quota_final_map, parsed_dates)
-        |> Map.update!("payment_date", fn _x -> ~N[1970-01-01 00:00:00] end)
+        |> Map.update!("payment_date", fn _x -> ~U[1970-01-01 00:00:00Z] end)
+        |> Map.update!("quota_delayed_days", fn _x -> _x |> String.to_integer() end)
 
       Enum.into([Quota: proto_quota_map], %{})
     end)
@@ -162,10 +167,8 @@ defmodule CabbotWeb.QuotaController do
 
         proto_concept_quota_map =
           Map.merge(concept_quota_final_map, concept_parsed_dates)
-	  |> Map.update!("payment_date", fn _x -> ~N[1970-01-01 00:00:00] end)
-         # |> Map.update!("quota_sec", fn _x -> _x |> String.to_integer() end)
-	  |> Map.update!("quota_sec", fn x -> x |> String.to_integer() end)
-	  
+          |> Map.update!("payment_date", fn _x -> ~U[1970-01-01 00:00:00Z] end)
+          |> Map.update!("quota_sec", fn x -> x |> String.to_integer() end)
 
         Enum.into([ClientsQuota: proto_concept_quota_map], %{})
     end)
@@ -192,7 +195,7 @@ defmodule CabbotWeb.QuotaController do
 
   def convert_dates(dates_list) do
     dates_list
-    |> Enum.map(fn {k, v} -> {k, Timex.parse(v, "%d/%m/%Y", :strftime) |> elem(1)} end)
+    |> Enum.map(fn {k, v} -> {k, Timex.parse(v, "%d/%m/%Y %H:%M:%S %Z", :strftime) |> elem(1)} end)
     |> Enum.into(%{})
   end
 
@@ -202,8 +205,10 @@ defmodule CabbotWeb.QuotaController do
     |> Enum.filter(&String.ends_with?(&1, "_date"))
     |> Enum.into(%{}, fn x -> {x, qmap[x]} end)
     |> Enum.filter(fn {_x, v} ->
-      Regex.match?(~r/^[0-9][0-9]\/[0-9][0-9]\/[0-9][0-9][0-9][0-9]/, v)
+      Regex.match?(~r/^[0-9][0-9]\/[0-9][0-9]\/[0-9][0-9][0-9][0-9]/, v |> to_string())
     end)
+    |> Enum.map(fn {k,v} -> {k,v <> " 00:00:00 Z"} end )
+    |> IO.inspect()
     |> convert_dates()
   end
 
@@ -227,7 +232,6 @@ defmodule CabbotWeb.QuotaController do
       {key, new_value}
     end
   end
-
 
   # ************************************************
 end
