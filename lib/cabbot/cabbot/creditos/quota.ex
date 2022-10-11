@@ -1,7 +1,7 @@
 defmodule Cabbot.Cabbot.Creditos.Quota do
   use Ecto.Schema
   import Ecto.Changeset
-  @timestamps_opts [type: :utc_datetime_usec]
+
 
  
   schema "quota" do
@@ -22,7 +22,7 @@ defmodule Cabbot.Cabbot.Creditos.Quota do
     field :quota_state, :string
     field :start_date, :utc_datetime
 
-    timestamps()
+
   end
 
   @doc false

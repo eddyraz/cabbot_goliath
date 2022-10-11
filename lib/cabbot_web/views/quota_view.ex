@@ -2,14 +2,11 @@ defmodule CabbotWeb.QuotaView do
   use CabbotWeb, :view
   alias CabbotWeb.QuotaView
 
-  def render("index_quota.json", %{Quota: quota}) do
-    %{data: render_many(quota, QuotaView, "quota.json")}
-  end
+  def render("show_many.json", %{quotas: quotas}) do
+    %{data: render_many(quotas, QuotaView, "quota.json")}
+   end
 
-  def render("index_clients_quota.json", %{ClientsQuota: clients_quota}) do
-    %{data: render_many(clients_quota, ClinetsQuotaView, "clients_quota.json")}
-  end
-
+  
   def render("show.json", %{quota: quota}) do
     %{data: render_one(quota, QuotaView, "quota.json")}
   end

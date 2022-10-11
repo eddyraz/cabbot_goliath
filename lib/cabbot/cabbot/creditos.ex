@@ -58,7 +58,7 @@ defmodule Cabbot.Cabbot.Creditos do
   end
 
 
-    def create_many_quota(attrs \\ %{}) do
+  def create_many_quotas(attrs \\ %{}) do
     %Quota{}
     |> Quota.changeset(attrs)
     |> Repo.insert_all()
