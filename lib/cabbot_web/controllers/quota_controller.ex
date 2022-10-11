@@ -1,48 +1,63 @@
 defmodule CabbotWeb.QuotaController do
   use CabbotWeb, :controller
-
   alias Cabbot.Cabbot.Creditos
   alias Cabbot.Cabbot.Creditos.Quota
   alias Cabbot.Cabbot.Creditos.ClientsQuota
-
   action_fallback CabbotWeb.FallbackController
 
   @config Application.compile_env(:cabbot, :creditos)
 
-  def index(conn, _params) do
-    quota = Creditos.list_quota()
-    render(conn, "index.json", quota: quota)
-  end
-
   def create(conn, %{"Creditos" => credits_params}) do
-    qm = credits_params
-    |> hd
-    |> parse_params()
-        
-    qmap = qm
-    |> Enum.filter(fn x -> Map.keys(x) == [:Quota] end)
-    |> Enum.map(fn x -> x[:Quota] |> Map.new(fn {k,v} -> {k |> String.to_atom(),v}  end) end)
-    resp_q_data = Cabbot.Repo.insert_all(Quota,qmap, returning: true)
-    |> elem(1)
-    conn
-    |> put_status(:created)
-    |> put_resp_header("location", Routes.quota_path(conn, :index, resp_q_data ))
-    |> put_view(CabbotWeb.QuotaView)
-    |> render("index.json", quotas: resp_q_data)
+    qm =
+      credits_params
+      |> Enum.map(&parse_params(&1))
+      |> List.flatten()
 
-    qcmap = qm
-    |> Enum.filter(fn x -> Map.keys(x) == [:ClientsQuota] end)
-    |> Enum.map(fn x -> x[:ClientsQuota] |> Map.new(fn {k,v} -> {k |> String.to_atom(),v}  end) end)
-    resp_cq_data = Cabbot.Repo.insert_all(ClientsQuota,qcmap, returning: true )
-    |> elem(1)
+    qmap =
+      qm
+      |> Enum.filter(fn z -> z |> Map.keys() == [:Quota] end)
+      |> Enum.map(fn y -> y[:Quota] |> Map.new(fn {k, v} -> {k |> String.to_atom(), v} end) end)
+      |> IO.inspect()
+
+    resp_q_data =
+      Cabbot.Repo.insert_all(Quota, qmap, returning: true)
+      |> elem(1)
+
     conn
     |> put_status(:created)
-    |> put_resp_header("location", Routes.quota_path(conn, :index, resp_cq_data ))
+    |> put_resp_header("location", Routes.quota_path(conn, :index, resp_q_data))
+    |> put_view(CabbotWeb.QuotaView)
+    |> render("show_many.json", quotas: resp_q_data)
+
+    qcmap =
+      qm
+      |> Enum.filter(fn z -> z |> Map.keys() == [:ClientsQuota] end)
+      |> Enum.map(fn y ->
+        y[:ClientsQuota] |> Map.new(fn {k, v} -> {k |> String.to_atom(), v} end)
+      end)
+      |> IO.inspect()
+
+    resp_cq_data =
+      Cabbot.Repo.insert_all(ClientsQuota, qcmap, returning: true)
+      |> elem(1)
+
+    conn
+    |> put_status(:created)
+    |> put_resp_header("location", Routes.quota_path(conn, :index, resp_cq_data))
     |> put_view(CabbotWeb.ClientsQuotaView)
-    |> render("index.json", clients_quota: resp_cq_data)
+    |> render("show_many.json", clients_quota: resp_cq_data)
+
+    #    parse_response(conn,resp_q_data ++ resp_cq_data,CabbotWeb.CreditsView)
   end
 
-  
+  def parse_response(cnx, data, view) do
+    Phoenix.View.render_many(data, view, "show_many.json", as: :data)
+
+    cnx
+    |> put_view(view)
+    |> render("show_many.json", credits: data)
+  end
+
   def parse_params(data) do
     loan_code_field = data["Codprestamo"]
     quota_concept_list = data["CuotasConcepto"]

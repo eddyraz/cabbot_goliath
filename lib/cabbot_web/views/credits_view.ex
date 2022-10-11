@@ -2,8 +2,18 @@ defmodule CabbotWeb.CreditsView do
   use CabbotWeb, :view
   alias CabbotWeb.CreditsView
 
-  def render("index.json", %{quota: quota}) do
-    %{data: render_many(quota, QuotaView, "credits_quota.json")}
+  def render("render_many.json", [
+        %{quota: quota},
+        %{quota: quota},
+        %{clients_quota: clients_quota},
+        %{clients_quota: clients_quota},
+        %{clients_quota: clients_quota},
+        %{clients_quota: clients_quota},
+        %{clients_quota: clients_quota},
+        %{clients_quota: clients_quota}
+      ]) do
+    %{data: render_many(quota, CreditsView, "credits_quota.json")}
+    %{data: render_many(clients_quota, CreditsView, "credits_quota.json")}
   end
 
   def render("show.json", %{quota: quota}) do
@@ -28,15 +38,11 @@ defmodule CabbotWeb.CreditsView do
       previous_state_sub_code: quota.previous_state_sub_code,
       prevision_amount: quota.prevision_amount,
       inte_adjust: quota.inte_adjust,
-      bill_number: quota.bill_number,
-}
+      bill_number: quota.bill_number
+    }
   end
 
-
-
-      def render("credits_clients_quota.json", %{clients_quota: clients_quota}) do
-
-
+  def render("credits_clients_quota.json", %{clients_quota: clients_quota}) do
     %{
       loan_code: clients_quota.loan_code,
       plan_number: clients_quota.plan_number,
@@ -61,7 +67,4 @@ defmodule CabbotWeb.CreditsView do
       office_code: clients_quota.office_code
     }
   end
-
-  
-  
 end
