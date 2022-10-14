@@ -2,6 +2,28 @@ defmodule Cabbot.Cabbot.Creditos.ClientsQuota do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @derive {Jason.Encoder, only: [:id,
+				 :loan_code,
+				 :calc_number_days,
+				 :concept_state,
+				 :condoned_amount,
+				 :office_code,
+				 :concept_code,
+                                 :debt_balance,
+                                 :earned_amount,
+                                 :last_payment_penalty,
+                                 :paid_amount,
+                                 :payment_date,
+                                 :payment_sec,
+                                 :plan_number,
+                                 :previous_concept_state,
+                                 :previous_earned_amount,
+                                 :previous_paid_amount,
+                                 :previous_payment_date,
+                                 :previous_sec_payment,
+                                 :quota_amount,
+                                 :quota_sec,
+                                 :user_code]}
 
 
   schema "clients_quota" do
