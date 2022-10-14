@@ -2,7 +2,22 @@ defmodule Cabbot.Cabbot.Creditos.Quota do
   use Ecto.Schema
   import Ecto.Changeset
 
-
+  @derive {Jason.Encoder, only: [:id,
+				 :loan_code,
+				 :inte_adjust,
+				 :balance_sub_code,
+				 :bill_number,
+                                 :delayed_quota_history_days, 
+                                 :due_date,
+				 :payment_date,
+				 :plan_number,
+				 :previous_payment_date,
+				 :previous_quota_state,
+				 :previous_state_sub_code,
+				 :prevision_amount,
+				 :quota_delayed_days,
+				 :quota_state,
+				 :start_date]}
  
   schema "quota" do
     field :inte_adjust, :binary

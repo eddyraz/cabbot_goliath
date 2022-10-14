@@ -13,51 +13,35 @@ defmodule CabbotWeb.QuotaController do
       |> Enum.map(&parse_params(&1))
       |> List.flatten()
 
+    
     qmap =
       qm
       |> Enum.filter(fn z -> z |> Map.keys() == [:Quota] end)
       |> Enum.map(fn y -> y[:Quota] |> Map.new(fn {k, v} -> {k |> String.to_atom(), v} end) end)
-      |> IO.inspect()
-
     resp_q_data =
-      Cabbot.Repo.insert_all(Quota, qmap, returning: true)
-      |> elem(1)
+      Cabbot.Repo.insert_all(Quota, qmap, returning: true) |> elem(1)
 
-    conn
-    |> put_status(:created)
-    |> put_resp_header("location", Routes.quota_path(conn, :index, resp_q_data))
-    |> put_view(CabbotWeb.QuotaView)
-    |> render("show_many.json", quotas: resp_q_data)
-
+    
     qcmap =
       qm
       |> Enum.filter(fn z -> z |> Map.keys() == [:ClientsQuota] end)
       |> Enum.map(fn y ->
         y[:ClientsQuota] |> Map.new(fn {k, v} -> {k |> String.to_atom(), v} end)
       end)
-      |> IO.inspect()
-
     resp_cq_data =
-      Cabbot.Repo.insert_all(ClientsQuota, qcmap, returning: true)
-      |> elem(1)
+	Cabbot.Repo.insert_all(ClientsQuota, qcmap, returning: true)|> elem(1)
 
-    conn
-    |> put_status(:created)
-    |> put_resp_header("location", Routes.quota_path(conn, :index, resp_cq_data))
-    |> put_view(CabbotWeb.ClientsQuotaView)
-    |> render("show_many.json", clients_quota: resp_cq_data)
 
-    #    parse_response(conn,resp_q_data ++ resp_cq_data,CabbotWeb.CreditsView)
+    parse_response(conn,resp_q_data ++ resp_cq_data,CabbotWeb.CreditsView)
   end
 
   def parse_response(cnx, data, view) do
-    Phoenix.View.render_many(data, view, "show_many.json", as: :data)
-
     cnx
     |> put_view(view)
-    |> render("show_many.json", credits: data)
+    |> render("render_many.json", credits: data)
   end
 
+  
   def parse_params(data) do
     loan_code_field = data["Codprestamo"]
     quota_concept_list = data["CuotasConcepto"]
@@ -192,16 +176,5 @@ defmodule CabbotWeb.QuotaController do
     @config["CuotasConceptoFillupValues"]
   end
 
-  # ***********************************************
-  # unused functions
-  # ***********************************************
 
-  def fix_null_fields({key, value}) do
-    if value |> to_string() |> String.length() == 0 do
-      new_value = @config["NullFieldFillupValues"]["Quota"][key]
-      {key, new_value}
-    end
-  end
-
-  # ************************************************
 end
